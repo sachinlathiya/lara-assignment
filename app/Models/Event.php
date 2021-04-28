@@ -8,8 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id',
+        'name'
+    ];
+
     public function workshops()  
     {  
-    return $this->belongsToMany('App\Models\Workshop','event_id');  
+        return $this->hasMany('App\Models\Workshop');  
     }
 }
