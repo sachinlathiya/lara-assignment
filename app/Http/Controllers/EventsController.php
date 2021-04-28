@@ -18,10 +18,9 @@ class EventsController extends BaseController
     }
 
     public function getFutureEventsWithWorkshops() {
-        $events = Event::whereHas('workshops', function($w){
+        return Event::whereHas('workshops', function($w){
             return $w->where('start', '>', Carbon::now());
         })->get();
-        dd($events);
         //throw new \Exception('implement in coding task 2');
         
     }
